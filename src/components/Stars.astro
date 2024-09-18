@@ -1,0 +1,93 @@
+<style>
+  #universe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa toda la pantalla horizontalmente */
+    height: 100%; /* Ocupa toda la pantalla verticalmente */
+    z-index: -1; /* Asegura que esté detrás de todo */
+  }
+</style>
+
+<div id="universe"></div>
+
+<script>
+  const layerCount = 5;
+  const starCount = 230;
+  const maxTime = 100; // Ajusté este valor para ralentizar las estrellas
+  const universe = document.getElementById("universe");
+  let stars = [];
+
+  function createStars() {
+    // Limpiar estrellas existentes
+    while (universe?.firstChild) {
+      universe?.removeChild(universe.firstChild);
+    }
+    stars = [];
+
+    const width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+    const height =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight;
+
+    for (let i = 0; i < starCount; ++i) {
+      const xpos = Math.round(Math.random() * width);
+      const star = document.createElement("div");
+      const speed = 1000 * (Math.random() * maxTime + 1);
+      const starClass = Math.floor(speed / 20000); // Definir starClass basado en la velocidad
+
+      // Establecer estilos de la estrella
+      star.style.position = "absolute";
+      star.style.height = "2px";
+      star.style.width = "2px";
+      star.style.borderRadius = "50%";
+      star.style.opacity = "0.2";
+      star.style.backgroundColor = "white"; // Color por defecto
+      if (starClass === 1) {
+        star.style.height = "3px";
+        star.style.width = "3px";
+        star.style.opacity = "0.4";
+        star.style.backgroundColor = "white";
+      } else if (starClass === 2) {
+        star.style.height = "4px";
+        star.style.width = "4px";
+        star.style.opacity = "0.6";
+        star.style.backgroundColor = "white";
+      } else if (starClass === 3) {
+        star.style.height = "4px";
+        star.style.width = "4px";
+        star.style.opacity = "0.8";
+        star.style.backgroundColor = "white";
+      }
+
+      universe?.appendChild(star);
+      stars.push(star);
+      star.animate(
+        [
+          {
+            transform: "translate3d(" + xpos + "px, " + height + "px, 0)",
+          },
+          {
+            transform:
+              "translate3d(" + xpos + "px, -" + Math.random() * 256 + "px, 0)",
+          },
+        ],
+        {
+          delay: Math.random() * -speed,
+          duration: speed,
+          iterations: Infinity, // Loop forever
+        }
+      );
+    }
+  }
+
+  // Llamar a createStars inicialmente
+  createStars();
+
+  // Agregar listener para el evento resize de la ventana
+  window.addEventListener("resize", createStars);
+</script>
