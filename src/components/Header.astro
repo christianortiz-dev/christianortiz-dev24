@@ -4,15 +4,25 @@ import LinkedInIcon from "../components/icons/LinkedIn.astro";
 ---
 
 <header
-  class="flex justify-between items-center py-3 px-6 rounded-2xl w-3/5 my-4 top-2 backdrop-blur-sm bg-slate-100/5 fixed shadow-2xl shadow-orange-400/10 z-50 border-2 border-slate-600/20"
+  class="flex justify-between items-center py-3 px-6 rounded-2xl w-11/12 lg:w-5/6 xl:-3/5 my-4 top-2 backdrop-blur-sm bg-slate-100/5 fixed shadow-2xl shadow-orange-400/10 z-50 border-2 border-slate-600/20"
 >
-  <nav class="flex flex-row items-center gap-6 ">
+  <nav class="flex flex-row items-center gap-6">
     <img
       class="size-12 rounded-full"
       src="https://avatars.githubusercontent.com/u/111589811?v=4"
       alt="Christian Ortiz"
     />
-    <ul class="flex flex-row gap-6 rounded-full bg-slate-500/20 px-4 py-2">
+    <button
+      class="lg:hidden block focus:outline-none"
+      id="menu-toggle"
+    >
+      <!-- Icono de hamburguesa -->
+      <svg class="w-8 h-8 text-slate-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+    <!-- Menú para pantallas grandes -->
+    <ul class="hidden lg:flex flex-row gap-6 rounded-full bg-slate-500/20 px-4 py-2">
       <a href="#hero" class="hover:text-orange-400 duration-100 ease">Home</a>
       <a href="#jobs" class="hover:text-orange-400 duration-100 ease">Mis Trabajos</a>
       <a href="#projects" class="hover:text-orange-400 duration-100 ease">Proyectos</a>
@@ -32,4 +42,44 @@ import LinkedInIcon from "../components/icons/LinkedIn.astro";
       >Contáctame</a
     >
   </ul>
+  
 </header>
+
+<!-- Menú para pantallas pequeñas -->
+<div id="menu" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0 invisible pt-3 pb-8 px-6 rounded-2xl w-11/12 my-4 top-24 backdrop-blur-sm bg-slate-100/5 fixed shadow-2xl shadow-orange-400/10 z-50 border-2 border-slate-600/20">
+  <ul class="flex flex-col">
+    <a href="#hero" class="text-white hover:text-orange-400 duration-100 ease m-1 rounded-full bg-slate-500/20 px-4 py-2">Home</a>
+    <a href="#jobs" class="text-white hover:text-orange-400 duration-100 ease m-1 rounded-full bg-slate-500/20 px-4 py-2">Mis Trabajos</a>
+    <a href="#projects" class="text-white hover:text-orange-400 duration-100 ease m-1 rounded-full bg-slate-500/20 px-4 py-2">Proyectos</a>
+    <a href="#" class="text-white hover:text-orange-400 duration-100 ease m-1 rounded-full bg-slate-500/20 px-4 py-2">Sobre mí</a>
+  </ul>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menu.style.maxHeight !== '0px' && menu.style.maxHeight !== '';
+
+      if (isOpen) {
+        // Cierra el menú con animación
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
+      } else {
+        // Abre el menú ajustando el maxHeight al contenido
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        menu.style.visibility = 'visible';
+      }
+    });
+  }
+</script>
+
+<style>
+  #menu {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+</style>

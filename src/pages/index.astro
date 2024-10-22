@@ -16,16 +16,16 @@ import Jobs from "../components/Jobs.astro";
 
     <a href="#jobs" class="arrows-down absolute bottom-12 m-auto w-[40px] h-[80px] rounded-full border-2 border-slate-700/50 hover:border-orange-400/60 after:absolute after:border-2 after:content-[''] after:size-2.5 after:top-0 after:left-1/2 after:hover:border-orange-400 before:absolute before:border-2 before:content-[''] before:size-2.5 before:top-0 before:left-1/2 before:hover:border-orange-400"></a>
     
-    <section id="jobs" class="flex flex-col w-3/5 h-screen py-36 before:py-6 after:py-6 before:content-['<my-jobs>'] after:content-['</my-jobs>'] before:opacity-30 before:italic after:opacity-30 after:italic after:-ml-16 before:-ml-16 after:font-thin before:font-thin">
+    <section id="jobs" class="flex flex-col w-3/5 before:py-6 after:py-6 before:content-['<my-jobs>'] after:content-['</my-jobs>'] before:opacity-30 before:italic after:opacity-30 after:italic after:-ml-16 before:-ml-16 after:font-thin before:font-thin">
       <h2 class="text-3xl">Mis Trabajos</h2>
       <Jobs>
         <slot />
       </Jobs>
     </section>
 
-    <a href="#projects" class="arrows-down absolute bottom-12 m-auto w-[40px] h-[80px] rounded-full border-2 border-slate-700/50 hover:border-orange-400/60 after:absolute after:border-2 after:content-[''] after:size-2.5 after:top-0 after:left-1/2 after:hover:border-orange-400 before:absolute before:border-2 before:content-[''] before:size-2.5 before:top-0 before:left-1/2 before:hover:border-orange-400"></a>
+    <!-- <a href="#projects" class="arrows-down absolute bottom-12 m-auto w-[40px] h-[80px] rounded-full border-2 border-slate-700/50 hover:border-orange-400/60 after:absolute after:border-2 after:content-[''] after:size-2.5 after:top-0 after:left-1/2 after:hover:border-orange-400 before:absolute before:border-2 before:content-[''] before:size-2.5 before:top-0 before:left-1/2 before:hover:border-orange-400"></a> -->
     
-    <section id="projects" class="flex flex-col w-3/5 h-screen py-36 before:py-6 after:py-6 before:content-['<some-projects>'] after:content-['</some-projects>'] before:opacity-30 before:italic after:opacity-30 after:italic after:-ml-16 before:-ml-16 after:font-thin before:font-thin">
+    <section id="projects" class="flex flex-col w-3/5 before:py-6 after:py-6 before:content-['<some-projects>'] after:content-['</some-projects>'] before:opacity-30 before:italic after:opacity-30 after:italic after:-ml-16 before:-ml-16 after:font-thin before:font-thin">
       <h2 class="text-3xl">Mis proyectos</h2>
       <Projects>
         <slot />
